@@ -1,1 +1,63 @@
-HELLO WORLD
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ancient Text Index</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 20px;
+        }
+        #results {
+            margin-top: 20px;
+        }
+        .result-item {
+            margin-bottom: 10px;
+        }
+    </style>
+</head>
+<body>
+    <h1>Ancient Text Index</h1>
+    <p>Search for mentions of cities, kings, or deities in ancient texts.</p>
+    
+    <input type="text" id="searchInput" placeholder="Enter a keyword..." />
+    <button onclick="search()">Search</button>
+
+    <div id="results"></div>
+
+    <script>
+        // Placeholder data: This will eventually come from a database or JSON file
+        const texts = [
+            { id: 1, content: "Hammurabi was the king of Babylon." },
+            { id: 2, content: "The city of Uruk was a center of Sumerian culture." },
+            { id: 3, content: "Enlil was worshipped as the god of wind." },
+            { id: 4, content: "The Treaty of Kadesh was signed by Ramses II." },
+        ];
+
+        function search() {
+            const input = document.getElementById('searchInput').value.toLowerCase();
+            const resultsDiv = document.getElementById('results');
+            resultsDiv.innerHTML = ''; // Clear previous results
+
+            if (!input) {
+                resultsDiv.innerHTML = '<p>Please enter a keyword to search.</p>';
+                return;
+            }
+
+            // Search for matches
+            const results = texts.filter(text => text.content.toLowerCase().includes(input));
+            if (results.length === 0) {
+                resultsDiv.innerHTML = '<p>No matches found.</p>';
+            } else {
+                results.forEach(result => {
+                    const div = document.createElement('div');
+                    div.classList.add('result-item');
+                    div.textContent = result.content;
+                    resultsDiv.appendChild(div);
+                });
+            }
+        }
+    </script>
+</body>
+</html>
