@@ -1,0 +1,22 @@
+{
+	"id": "1",
+	"title": "Enlil and Ninlil",
+	"metadata": {
+		"author": "Anonymous",
+		"culture": "Sumerian",
+		"date_written": "-2100",
+		"date_occurred": "-2150",
+		"location": "Sumer"
+	},
+	"copyright": "This text is part of the ETCSL and is provided under the terms of the license: CC-BY",
+	"content": "There was a city, there was a city -- the one we live in. Nibru was the city, the one we live in. Dur-ĝišnimbar was the city, the one we live in. Id-sala is its holy river, Kar-ĝeština is its quay. Kar-asar is its quay where boats make fast. Pu-lal is its freshwater well. Id-nunbir-tum is its branching canal, and if one measures from there, its cultivated land is 50 sar each way. Enlil was one of its young men, and Ninlil was one its young women. Nun-bar-še-gunu was one of its wise old women.",
+	"keywords": {
+		"figures": [
+			{ "name": "Enlil", "type": "god", "id": "figure3" }
+		],
+		"places": [
+			{ "name": "Nibru", "type": "city", "id": "place3" }
+		],
+		"groups": []
+	}
+}

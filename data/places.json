@@ -1,0 +1,5 @@
+[
+	{"name": "Uruk", "type": "city", "id": "place1"},
+	{"name": "Cedar Forest", "type": "geographical_area", "id": "place2"},
+	{"name": "Nibru", "type": "city", "id": "place3"}
+]

@@ -1,0 +1,5 @@
+[
+	{"name": "Gilgamesh", "type": "king", "id": "figure1"},
+	{"name": "Enlil", "type": "god", "id": "figure3"},
+	{"name": "Enkidu", "type": "hero", "id": "figure2"}
+]
