@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Read Text</title>
+</head>
+<body>
+  <a href="index.html">← Back to Home</a>
+  <div id="textContainer"></div>
+
+  <script>
+    // Function to get query parameters from the URL
+    function getQueryParam(param) {
+      const params = new URLSearchParams(window.location.search);
+      return params.get(param);
+    }
+
+    // Assuming your texts are stored in window.texts from load_texts.js
+    // You can either load them again here or use localStorage
+    // For this example, let's assume you reload them using the manifest (simpler for now)
+
+    fetch('./data/texts/manifest.json')
+      .then(response => response.json())
+      .then(manifest => {
+        // Load all texts as before
+        const promises = manifest.map(baseFilename => {
+          const jsonPath = `./data/texts/${baseFilename}.json`;
+          return fetch(jsonPath).then(resp => resp.json());
+        });
+        return Promise.all(promises);
+      })
+      .then(allTexts => {
+        // Get the id from the URL query (adjust property if needed)
+        const textId = getQueryParam('id');
+        const textObj = allTexts.find(t => t.id === textId);
+        const container = document.getElementById('textContainer');
+
+        if (textObj) {
+          container.innerHTML = `<h1>${textObj.title}</h1>
+            <div>${textObj.content}</div>
+            <p><em>${textObj.copyright}</em></p>`;
+        } else {
+          container.innerHTML = `<p>Text not found.</p>`;
+        }
+      })
+      .catch(err => console.error(err));
+  </script>
+</body>
+</html>
