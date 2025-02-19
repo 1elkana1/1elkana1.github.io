@@ -31,10 +31,11 @@ function search() {
         results.forEach(result => {
             const div = document.createElement('div');
             div.classList.add('result-item');
-            div.innerHTML = `
-                <h3>${result.title}</h3>
-                <p>${result.content.substring(0, 150)}...</p>
-            `;
+			// Wrap the result in an anchor linking to text.html
+			div.innerHTML = `
+				<h3><a href="text.html?id=${encodeURIComponent(result.id)}">${result.title}</a></h3>
+				<p>${result.content.substring(0, 150)}...</p>
+			`;
             resultsDiv.appendChild(div);
         });
     }

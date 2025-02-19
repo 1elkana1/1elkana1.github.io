@@ -47,4 +47,4 @@ This project is an interactive web platform designed to index and explore ancien
 
 ---
 
-Happy exploring and indexing!
+Happy exploring!

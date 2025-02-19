@@ -1,5 +1,3 @@
-// static/js/load_texts.js
-
 window.texts = []; // Global variable to store loaded texts
 
 // Fetch the manifest file which should be a JSON array of base filenames
