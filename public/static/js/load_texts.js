@@ -1,25 +1,10 @@
-window.texts = []; // Global variable to store loaded texts
-
-// Fetch the manifest file which should be a JSON array of base filenames
-fetch('./data/texts/manifest.json')
-  .then(response => {
-    if (!response.ok) throw new Error('Failed to fetch manifest.json');
-    return response.json();
+// Fetch texts from your ASP.NET Core API
+fetch('https://htpbackend20250219-amhwabhahjfch9f6.israelcentral-01.azurewebsites.net/api/texts')
+  .then(response => response.json())
+  .then(data => {
+      // Assume the API returns an array of texts with properties id and title
+      window.texts = data;
+      // Now you can call listAllTexts() to update the UI.
+      listAllTexts();
   })
-  .then(manifest => {
-    // For each filename in the manifest, load the corresponding JSON file
-    const promises = manifest.map(baseFilename => {
-      const jsonPath = `./data/texts/${baseFilename}.json?v=${new Date().getTime()}`;
-      return fetch(jsonPath)
-        .then(resp => {
-          if (!resp.ok) throw new Error(`Failed to load ${jsonPath}`);
-          return resp.json();
-        });
-    });
-    return Promise.all(promises);
-  })
-  .then(allTexts => {
-    window.texts = allTexts;
-    console.log('Texts loaded:', window.texts);
-  })
-  .catch(error => console.error('Error loading texts:', error));
+  .catch(err => console.error('Error loading texts:', err));
