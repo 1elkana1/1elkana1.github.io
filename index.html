@@ -15,47 +15,23 @@
 <body>
     <h1>Ancient Text Index</h1>
 	
+	
 	<h3>All Texts</h3>
-	<div id="textList"></div>
-
-	<script>
-		// This code can be added in a new file (e.g., list_texts.js) or inline below load_texts.js
-		// Make sure it's executed after window.texts has been populated.
-
-		function listAllTexts() {
-			const textListDiv = document.getElementById('textList');
-			if (!window.texts || window.texts.length === 0) {
-				textListDiv.innerHTML = '<p>Loading texts...</p>';
-				return;
-			}
-
-			let listHTML = '<ul>';
-			window.texts.forEach(text => {
-				// Link to text.html with a query parameter for the text's id
-				listHTML += `<li><a href="text.html?id=${encodeURIComponent(text.id)}">${text.title}</a></li>`;
-			});
-			listHTML += '</ul>';
-			textListDiv.innerHTML = listHTML;
-		}
-
-		// Call listAllTexts after a short delay or use an event to know that window.texts is loaded.
-		// For example, if your load_texts.js sets window.texts and logs "Texts loaded:"
-		document.addEventListener('DOMContentLoaded', () => {
-			// Poll for window.texts to be non-empty, or better yet, call listAllTexts at the end of your load_texts.js
-			setTimeout(listAllTexts, 500); // Adjust timeout as needed
-		});
-	</script>
+	<div id="textList">
+		<!-- Texts will be loaded here by JavaScript -->
+	</div>
+	
 	
     <p>Search for mentions of cities, kings, or deities in ancient texts.</p>
-    
+	
     <input type="text" id="searchInput" placeholder="Enter a keyword..." />
     <button onclick="search()">Search</button>
 
     <div id="results">
-        <!-- Texts will be loaded here by JavaScript -->
+        <!-- Results will be loaded here by JavaScript -->
     </div>
     
-    <!-- External scripts -->
+	
     <script src="./static/js/load_texts.js"></script>
     <script src="./static/js/search.js"></script>
 </body>

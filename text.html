@@ -8,34 +8,6 @@
 <body>
   <a href="index.html">← Back to Home</a>
   <div id="textContainer"></div>
-
-  <script>
-    // Function to get query parameters from the URL
-	function getQueryParam(param) {
-	  const params = new URLSearchParams(window.location.search);
-	  return params.get(param);
-	}
-
-	const textId = getQueryParam('id');
-
-	// Fetch a single text by ID from your API:
-	fetch(`https://htpbackend20250219-amhwabhahjfch9f6.israelcentral-01.azurewebsites.net/api/texts/${encodeURIComponent(textId)}`)
-	  .then(response => {
-		if (!response.ok) {
-		  throw new Error('Text not found');
-		}
-		return response.json();
-	  })
-	  .then(textObj => {
-		const container = document.getElementById('textContainer');
-		container.innerHTML = `<h1>${textObj.title}</h1>
-		  <div>${textObj.content}</div>
-		  <p><em>${textObj.copyright || ''}</em></p>`;
-	  })
-	  .catch(err => {
-		console.error(err);
-		document.getElementById('textContainer').innerHTML = `<p>Text not found.</p>`;
-	  });
-  </script>
+  <script src="./static/js/get_query_param.js"></script>
 </body>
 </html>
